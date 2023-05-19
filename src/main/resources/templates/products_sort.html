@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Keep Tabs On Products</title>
+	<link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body>
+	<nav>
+		<div>
+			<div>
+				<a th:href="@{/}"><img th:src="@{/images/ktop_logo.png}"></a>
+				<a th:href="@{/homes}">Homes</a>
+				<a th:href="@{/users}">Users</a>
+				<a th:href="@{/users_homes}">Users Homes</a>
+				<a th:href="@{/products}">Products</a>
+				<a th:href="@{/products_category}">Products Category</a>
+			</div>
+		</div>
+	</nav>
+	<div id="content">
+		<div id="join">
+			<div id="back">
+				<a th:href="@{'/products'}">Back</a>
+			</div>
+		</div>
+		<h1>Products list sorted by deadline</h1>
+		<table>
+			<thead>
+				<tr>
+					<th>Deadline</th>
+					<th>Id</th>
+					<th>PCat</th>
+					<th>Purchase Date</th>
+					<th>Open Date</th>					
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="products : ${productsort}">
+					<td th:text="${products.deadline}">Deadline</td>
+					<td th:text="${products.id}">Id</td>
+					<td th:text="${products.pcat.pcat_name}">PCat</td>
+					<td th:text="${products.purchase_date}">Purchase Date</td>
+					<td th:text="${products.open_date}">Open Date</td>					
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Keep Tabs On Products</title>
+	<link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body>
+	<nav>
+		<div>
+			<div>
+				<a th:href="@{/}"><img th:src="@{/images/ktop_logo.png}"></a>
+				<a th:href="@{/homes}">Homes</a>
+				<a th:href="@{/users}">Users</a>
+				<a th:href="@{/users_homes}">Users Homes</a>
+				<a th:href="@{/products}">Products</a>
+				<a th:href="@{/products_category}">Products Category</a>
+			</div>
+		</div>
+	</nav>
+	<div id="content">
+		<div id="join">
+			<div id="back">
+				<a th:href="@{'/users_homes'}">Back</a>
+			</div>
+		</div>
+		<h1>Edit user home</h1>
+		<form action="#" th:action="@{/save_user_home}" th:object="${users_homes}" method="post">
+			<table>
+				<tr>
+					<td>User Home Id:</td>
+					<td><input type="text" th:field="*{id}" readonly="readonly" /></td>
+				</tr>
+				<tr>
+					<td>User</td>
+					<td><input type="text" th:field="*{user}" /></td>
+					<td th:if="${#fields.hasErrors('user')}" th:errors="*{user}">Title Error</td>
+				</tr>
+				<tr>
+					<td>Home</td>
+					<td><input type="text" th:field="*{home}" /></td>
+					<td th:if="${#fields.hasErrors('home')}" th:errors="*{home}">Title Error</td>
+				</tr>
+			</table>
+			<button type="submit" class="tbtn">Edit</button>
+		</form>
+	</div>
+</body>
+</html>

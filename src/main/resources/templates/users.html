@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Keep Tabs On Products</title>
+	<link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body>
+	<nav>
+		<div>
+			<div>
+				<a th:href="@{/}"><img th:src="@{/images/ktop_logo.png}"></a>
+				<a th:href="@{/homes}">Homes</a>
+				<a th:href="@{/users}">Users</a>
+				<a th:href="@{/users_homes}">Users Homes</a>
+				<a th:href="@{/products}">Products</a>
+				<a th:href="@{/products_category}">Products Category</a>
+			</div>
+		</div>
+	</nav>
+	<div id="content">
+		<div id="join">
+			<div id="back">
+				<a th:href="@{'/add_user'}">Add user</a>
+			</div>
+		</div>
+		<h1>Users list</h1>
+		<table>
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Name</th>
+					<th>Email</th>
+					<th>Password</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="users : ${users}">
+					<td th:text="${users.id}">Id</td>
+					<td th:text="${users.name}">Name</td>
+					<td th:text="${users.email}">Email</td>
+					<td th:text="xxxxxxxx">Password</td>
+					<td class="tbtn"><a th:href="@{'/edit_user/' + ${users.id}}">Edit</a></td>
+					<td class="tbtn"><a th:href="@{'/delete_user/' + ${users.id}}">Delete</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

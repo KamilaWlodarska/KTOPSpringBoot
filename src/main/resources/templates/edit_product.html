@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Keep Tabs On Products</title>
+	<link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body>
+	<nav>
+		<div>
+			<div>
+				<a th:href="@{/}"><img th:src="@{/images/ktop_logo.png}"></a>
+				<a th:href="@{/homes}">Homes</a>
+				<a th:href="@{/users}">Users</a>
+				<a th:href="@{/users_homes}">Users Homes</a>
+				<a th:href="@{/products}">Products</a>
+				<a th:href="@{/products_category}">Products Category</a>
+			</div>
+		</div>
+	</nav>
+	<div id="content">
+		<div id="join">
+			<div id="back">
+				<a th:href="@{'/products'}">Back</a>
+			</div>
+		</div>
+		<h1>Edit product</h1>
+		<form action="#" th:action="@{/save_product}" th:object="${products}" method="post">
+			<table>
+				<tr>
+					<td>Product Id:</td>
+					<td><input type="text" th:field="*{id}" readonly="readonly" /></td>
+				</tr>
+				<tr>
+					<td>Product Category</td>
+					<td><input type="text" th:field="*{pcat}" /></td>
+					<td th:if="${#fields.hasErrors('pcat')}" th:errors="*{pcat}">Title Error</td>
+				</tr>
+				<tr>
+					<td>Purchase Date</td>
+					<td><input type="date" th:field="*{purchase_date}" /></td>
+					<td th:if="${#fields.hasErrors('purchase_date')}" th:errors="*{purchase_date}">Title Error</td>
+				</tr>
+				<tr>
+					<td>Open Date</td>
+					<td><input type="date" th:field="*{open_date}" /></td>
+					<td th:if="${#fields.hasErrors('open_date')}" th:errors="*{open_date}">Title Error</td>
+				</tr>
+				<tr>
+					<td>Deadline</td>
+					<td><input type="date" th:field="*{deadline}" /></td>
+					<td th:if="${#fields.hasErrors('deadline')}" th:errors="*{deadline}">Title Error</td>
+				</tr>
+			</table>
+			<button type="submit" class="tbtn">Edit</button>
+		</form>
+	</div>
+</body>
+</html>

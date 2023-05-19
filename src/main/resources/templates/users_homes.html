@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Keep Tabs On Products</title>
+	<link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body>
+	<nav>
+		<div>
+			<div>
+				<a th:href="@{/}"><img th:src="@{/images/ktop_logo.png}"></a>
+				<a th:href="@{/homes}">Homes</a>
+				<a th:href="@{/users}">Users</a>
+				<a th:href="@{/users_homes}">Users Homes</a>
+				<a th:href="@{/products}">Products</a>
+				<a th:href="@{/products_category}">Products Category</a>
+			</div>
+		</div>
+	</nav>
+	<div id="content">
+		<div id="join">
+			<div id="back">
+				<a th:href="@{'/add_user_home'}">Add user home</a>
+			</div>
+		</div>
+		<h1>Users Homes list</h1>
+		<table>
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Home</th>
+					<th>User</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="users_homes : ${users_homes}">
+					<td th:text="${users_homes.id}">Id</td>
+					<td th:text="${users_homes.home.home_name}">Home</td>
+					<td th:text="${users_homes.user.name}">User</td>
+					<td class="tbtn"><a th:href="@{'/edit_user_home/' + ${users_homes.id}}">Edit</a></td>
+					<td class="tbtn"><a th:href="@{'/delete_user_home/' + ${users_homes.id}}">Delete</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
